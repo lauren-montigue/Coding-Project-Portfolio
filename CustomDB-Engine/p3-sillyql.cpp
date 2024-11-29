@@ -1,100 +1,5 @@
 // Project Identifier: C0F4DFE8B340D81183C208F70F9D2D797908754D
 
-//meant to be built in pieces
-//dont have to understand indices, join to start working on project
-//can add code later to say if theres an index do whatever, otherwise do old thing
-//starting point: command line - quiet and help
-//then start reading input:
-//start with a do while loop
-// do { cout << "% ";
-//std::cin >> cmd;
-//PROCESS command
-//while (cmd != QUIT)}
-//dont getline a whole command, just read from std::cin
-//then next write count (if you see # sign, you can do getline and throw rest away)
-
-//then create a command
-//remove is easy after you write create
-//then insert and printall
-//now you can see the project work!
-//then deleterows and printwhere
-//generate index and join
-
-//high-level data structures - someone could create multiple tables at a time and work with them
-//so need quick way to go from name of table to everything associated (hash tables)
-//unordered map is associative container - key-value pairs
-//key type is string (table name), value is table object
-//whats in a table object (class)? table name, everything that came from... column names, column types, a way to remember the order (like model is index 1, etc)
-//also need everything that comes from insert command in table object
-//blue is meta data - data about data
-//data in table is the black and white (in overview pic)
-//high level: hash table with table objects
-//hash tables are memory hogs... biggest memory comes from black and white (insert command), bigger than meta data
-//col names will be small for example
-//worry about space in insert command! dont let it grow by doubling. insert 1025 rows, 17 columns. if you
-//let it grow naturally, itll double to 2048 and 32, 4x as much memory!
-//use resize and reserve bby girl
-//make size of other things reusable
-//can also save some memory with index
-//black and white should be a 2D std::vector, rows being outer dimension (first square brackets)
-//table entry isnt template, its variant type - can take care of other types but will take care of things for you
-//if you do things right, you'll never compare different types
-//table entry class is provided in starter code
-//when someone inserts, check if the table they want to insert into exists
-//if table name is valid, then rest of line will be valid
-//want to resize to n + k and want to put in rows from n to n + k - 1
-//learn the difference between push back and emplace back
-//push back adds x to the end of the std::vector. if you give emplace back a y, y is given to constructor for type x
-//after insert, work on printall
-//printall is big loop through all rows, all columns, but might not want to print all. maybe skipping over things
-//then time for delete and printwhere
-//for these, dont try and make them one function! break things down
-//if you have table class, table class can have member functions
-//print function, printall function, printwhere function that is also broken up
-//dont want giant if else - break down into four way split of the type
-//read the type then call helper with a table entry of the type
-//printwhere figures out column name, type of col, does col exist, read a variable of that type 
-//call helper with table entry containing that string, has to be right type
-//then that function can do three-way split on comparison split. dont write this code three times. another helper!
-//will eventually want to use functor for comparison
-
-//DELETE
-//dont have n^2 complexity, use STL - look at the algorithms (Canvas > files > resources > algo) get rid of things in a container based on some condition
-//this is O(n)
-//put things it likes at the beginning, leaves things it doesnt like untouched, then now you have to make it have less rows - use STL to do deleting
-//STL will need functor to say do we like this? do we want to get rid of it? functor has to be able to accept a row
-//functor has to know when i receive this row, i have to look at this value
-//functor has to have member variables - which col to look in, value to compare to
-//value is a table entry that contains the right type
-//breakdwown: four-way split on type to read, call to helper with table entry containing what we read, then three-way split on what's the comparison
-//then could make a functor, call another helper function with functor, then that function do the work... functor has to be templated bc could be one of three types
-//take a look at set union for templated syntax
-//functor itself has to initialize its member variables - look at index sort (similar approach)
-//table entry objects cannot be default constructed, must all be created with particular type
-//functor has to have constructor initializing member variable
-//make three functors - less than, greater, equal.
-//not a functor that does three jobs!
-
-//PRINTWHERE
-//draw out printwhere!
-//this is hardest part, need to understand breakdown of four-way split, three-way split, then index gen
-//how does generate index affect all these other commands? how to do efficiently?
-//maybe gen along the way to make future commands faster
-//BST index on price can help with less, equal, greater
-//model - equality comparisons only, could do BST or hash. only BST does less than, greater
-
-//GENERATE INDEX
-//just have to go back after everything and check how it affects each function
-//mayyybe will have to rewrite join, but that's it
-
-//JOIN
-//join two tables together
-//example in ... where... spec I guess... of how this happens
-//each is row combination... when name in one matches person in other, row gets produced
-//if no matches, nothing is printed. output could be anything from 0 rows to m*m
-//straightforward approach: loop through every row in first, every row in second
-//what's better? if no matches, do it faster than n^2. this is where indices can help!
-
 #include "p3-sillyql.h"
 #include <getopt.h>
 #include "TableEntry.h"
@@ -185,7 +90,6 @@ void SillyQL::readInput(){
       std::cin >> into;
       std::cin >> tableName; 
 
-      //office hours: why couldnt i declare into and tablename just in this if statement? so weird
       insert(tableName);
     }
     
@@ -256,7 +160,6 @@ void SillyQL::readInput(){
 
 void SillyQL::create(std::string &tableName){
 
-  //FROM DARDEN LECTURE
   auto it = tableHashMap.find(tableName);
   if (it == tableHashMap.end())
   {
