@@ -9,7 +9,7 @@ Silly QL is a lightweight database engine built to explore the foundational conc
 - **System-Level Programming**: Managed data using in-memory structures and designed modular code for extensibility.
 
 ## **Key Features**
-- **Command-Based Interface**: Supports commands like `CREATE`, `INSERT`, `PRINT`, 'PRINTWHERE', `DELETE`, `JOIN`, and more.
+- **Command-Based Interface**: Supports commands like `CREATE`, `INSERT`, `PRINT`, `PRINTWHERE`, `DELETE`, `JOIN`, and more.
 - **Error Handling**: Provides meaningful feedback for invalid operations or commands.
 - **In-Memory Operations**: Optimized for fast data access without external dependencies.
 
