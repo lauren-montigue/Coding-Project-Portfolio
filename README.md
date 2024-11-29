@@ -8,3 +8,4 @@ While these projects are in C++, I am also proficient in Python, MATLAB, and Jav
 ## **Contents**
 Each project includes:
 - **A Detailed README**: Contains a project overview, key attributes, and an example workflow.
+- **Code Files**: Well-documented and organized for easy understanding.
