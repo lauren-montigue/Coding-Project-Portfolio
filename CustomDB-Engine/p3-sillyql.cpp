@@ -33,7 +33,6 @@ void SillyQL::getOptions(int argc, char * argv[]/*, Options &options*/) {
     //parse through getopt_long, make changes based on switch blocks
     while ((choice = getopt_long(argc, argv, "hq", long_options, &index)) != -1) { //index needed, counts arguments
 
-      //string arg = "";
       switch (choice) { //choice represents user input to command line
         case 'h':
         {
@@ -235,15 +234,11 @@ void SillyQL::insert(std::string &tableName)
 
 void SillyQL::print(std::string &tableName)
 {
-  //std::cout << "made it to sillyQL print!" << std::endl;
-
   auto it = tableHashMap.find(tableName);
   if (it != tableHashMap.end()){
 
     int numColsToPrint;
     std::cin >> numColsToPrint;
-
-    //std::cout << "num cols to print: " << numColsToPrint << std::endl;
 
     std::vector <std::string> colNames;
     colNames.reserve(numColsToPrint);
@@ -259,7 +254,6 @@ void SillyQL::print(std::string &tableName)
     for (int i = 0; i < numColsToPrint; ++i)
     {
       std::cin >> colName;
-      //std::cout << colName << std::endl;
       
       for (size_t j = 0; j < it->second.metaData.size(); ++j)
       {
@@ -267,7 +261,6 @@ void SillyQL::print(std::string &tableName)
         {
           colNames.push_back(colName);
           colIndices.push_back(j);
-          //std::cout << j << std::endl;
           matchFound = true;
         }
       }
@@ -286,15 +279,11 @@ void SillyQL::print(std::string &tableName)
 
     if (allOrWhere == "WHERE")
     {
-      //std::cout << "calling print where!" << std::endl;
       it->second.printWhere(colIndices, colNames, quiet);
     }
 
     else
     {
-      //std::cout << "calling print all!" << std::endl;
-      //std::cout << "colNames.size() = " << colNames.size() << std::endl;
-      //std::cout << "colIndices.size() = " << colIndices.size() << std::endl;
       it->second.printAll(colNames, colIndices, quiet);
     }
 
