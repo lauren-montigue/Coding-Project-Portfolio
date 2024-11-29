@@ -1,7 +1,7 @@
 # Silly QL: A Custom Database Engine
 
 ## Overview
-Silly QL is a lightweight database engine built to explore the foundational concepts of database systems, including query parsing, data storage, and retrieval.
+Silly QL is a lightweight database engine built to explore the foundational concepts of database systems, including query parsing, data storage, and retrieval. This project provides hands-on experience with how databases operate under the hood and reflects my ability to design efficient, modular systems.
 
 ## Skills Demonstrated
 - **Database Design**: Created a custom framework to execute basic SQL-like operations.
