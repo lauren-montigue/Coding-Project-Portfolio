@@ -5,7 +5,7 @@ The MST-TSP OptTSP project explores three key algorithms to solve and optimize t
 
 1. **MST**: Uses a Minimum Spanning Tree (MST) to approximate TSP solutions.
 2. **FASTTSP**: Constructs a near-optimal TSP solution using a heuristic insertion method.
-3. **OPTTSP**: Improves TSP solutions from FASTTSP with a combination of permutation generation and pruning (branch-and-bound) strategies.
+3. **OptTSP**: Improves TSP solutions from FASTTSP with a combination of permutation generation and pruning (branch-and-bound) strategies.
 
 This project showcases my understanding of graph algorithms, heuristic methods, and optimization techniques to tackle computationally complex problems. All files in this project are my own work.
 
