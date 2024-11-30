@@ -17,17 +17,20 @@ This project was completed collaboratively with a partner, using provided starte
 - **Flexible Input**: Supports classification by topic (e.g., "exam," "euchre") or by author (e.g., "instructor," "student").
 - **Robust Error Handling**: Provides clear messages for missing files or invalid arguments.
 
-## **Example Workflow**
+## **Example Output**
 
-### **Training Information**
 ```plaintext
 trained on 8 examples
 vocabulary size = 49
 
-classes:
-  calculator, 3 examples, log-prior = -0.981
-  euchre, 5 examples, log-prior = -0.470
+test data:
+  correct = euchre, predicted = euchre, log-probability score = -13.7
+  content = my code segfaults when bob is the dealer
 
-classifier parameters:
-  calculator:assert, count = 1, log-likelihood = -1.100
-  euchre:upcard, count = 2, log-likelihood = -0.916
+  correct = euchre, predicted = calculator, log-probability score = -12.5
+  content = no rational explanation for this bug
+
+  correct = calculator, predicted = calculator, log-probability score = -13.6
+  content = countif function in stack class not working
+
+performance: 2 / 3 posts predicted correctly
