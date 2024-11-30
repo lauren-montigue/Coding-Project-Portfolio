@@ -49,21 +49,6 @@ private:
         return labels;
     }
 
-    /*void set_labels(csvstream &csvin)
-    {
-        string label;
-        map<string, string> row;
-        vector<string>labels_repeat;
-
-        while (csvin >> row) {
-            //@emilywal - vector of labels eventually needs to be emptied, but I don't know where. 
-            //not in this function obv but maybe in predict_label?
-            label = row["tag"];
-            labels.push_back(label);
-        }
-        // @lauren -- this is creating a vector of labels with repeats
-    }*/ 
-
     double log_prior(const string &label) {
         return log((1.0 * posts_containing_label[label])/num_posts);
     }
@@ -108,10 +93,6 @@ public:
     }
 
     //EFFECTS: reading in file, updating all private member variables accordingly
-    //@emilywal - incrementing num_unique_words
-    //@emilywal - should word and label be parameters? this format doesn't work well with main
-    // ^ should both come from files themselves, and word should probably come from set of unique words generate in above function
-    // ^^ I think this is fixed, wanted to keep the comment in case issues come up later we have suggestions of where to look for something wrong
     void train_classifier(const string &filename, bool debug)
     {
         bool contains_word;
@@ -204,9 +185,6 @@ public:
     //write predict function, use private member variables and calculation from spec
     pair<string,double> predict_label(const string &post)
     {
-        //@emilywal - add contributions from each word in alphabetic order? from spec 
-        //^it looks like sets of strings automatically sort alphabetically so this shouldnt be an issue, 
-        //but keeping this here so we can check for sure during debugging
 
         double max_likeliness = -2147483648; //set this to be likeliness of first label
         string most_likely_label = *(unique_labels_in_training_set.begin());
