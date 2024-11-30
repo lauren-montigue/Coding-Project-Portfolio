@@ -21,11 +21,3 @@ int main(int argc, char *argv[]) {
   //letterman object return 0
   return 0;
 }  
-
-/*{
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": []
-}*/
