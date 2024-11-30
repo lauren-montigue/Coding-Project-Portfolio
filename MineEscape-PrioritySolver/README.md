@@ -14,7 +14,6 @@ The P2random files are given as starter code, but all other files are my own.
 ## **Key Features**
 - **Weighted Graph Traversal**: Accounts for traps, obstacles, and power-ups like TNT to optimize escape routes.
 - **Dynamic Gameplay**: TNT creates chain reactions, destroying blocks and reducing traversal costs, while traps increase costs and add strategic challenges.
-- **Scalability**: Supports mines of varying complexities and grid sizes.
 
 ## **Example Workflow**
 ### **Input**
