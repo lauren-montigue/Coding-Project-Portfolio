@@ -20,8 +20,8 @@ The P2random files are given as starter code, but all other files are my own.
 ### **Input**
 ```plaintext
 Grid:
-0 1 1 T
-2 T 0 1
+0 1 1 -1
+2 -1 0 1
 1 2 3 0
 
 Start: (0, 0)
