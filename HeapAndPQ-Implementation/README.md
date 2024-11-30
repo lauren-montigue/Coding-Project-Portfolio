@@ -1,13 +1,15 @@
 # **Priority Queue and Heap Implementation**
 
 ## **Overview**
-This project implements three types of priority queues—**binary heap-based**, **sorted array-based**, and **pairing heap-based**. A significant aspect of this project was developing a deep understanding of how these data structures operate under the hood. For the **pairing heap-based priority queue**, I worked from a detailed document outlining its theoretical functionality and was tasked with translating that into an efficient implementation. This required designing and coding directly from the conceptual description of the data structure, focusing both on performance and accuracy.
+This project implements three types of priority queues —**binary heap-based**, **sorted array-based**, and **pairing heap-based**. A large aspect of this project was developing a deep understanding of how these data structures operate under the hood. 
+
+For the **pairing heap-based priority queue**, I worked from a detailed document outlining its theoretical functionality and had to translate that into an efficient implementation. This task required designing and coding directly from the conceptual description of the data structure, focusing both on performance and accuracy.
 
 While some starter code (e.g., project scaffolding and helper classes) was provided, I wrote the core implementations of the priority queue functions in the following files:
 - **`SortedPQ.h`**: Sorted array-based priority queue.
 - **`BinaryPQ.h`**: Binary heap-based priority queue.
 - **`PairingPQ.h`**: Pairing heap-based priority queue.
-- **Test Files**: Wrote custom tests to validate the functionality of each priority queue implementation.
+- **Test Files**: Wrote custom tests to validate the functionality of each PQ implementation.
 
 All other files in this project were provided as part of the starter code.
 
