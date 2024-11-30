@@ -31,3 +31,10 @@ This project is particularly significant to me as it is my first without any sta
 ```bash
 ./lexical_morph_search dictionary.txt -b "start" -e "end" -o W -q -c -l -p
 
+### **Input Example**
+```plaintext
+Dictionary: [start, stark, stack, shack, slack, end]
+Start Word: start
+End Word: end
+Options: -o W (word mode), -q (queue for BFS), -c (change), -l (length), -p (swap)
+
