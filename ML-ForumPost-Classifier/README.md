@@ -3,13 +3,13 @@
 ## **Overview**
 The ML Classifier project applies natural language processing and machine learning techniques to classify Piazza posts based on their content. Using the "bag of words" model, this program analyzes past posts to predict their topic or author.
 
-This project was completed collaboratively with a partner, using provided starter code. My primary contributions focused on implementing functions in BinarySearchTree.h, developing the classifier logic, and optimizing its accuracy. Other components of the project were either part of the starter code or implemented by my partner.
+I completed this project collaboratively with a partner, using provided starter code. My primary contributions focused on implementing functions in BinarySearchTree.h, developing the classifier logic, and optimizing its accuracy. Other components of the project were either part of the starter code or implemented by my partner.
 
 ## **Skills Demonstrated**
 - **Natural Language Processing**: Implemented the "bag of words" model to extract meaningful features from textual data.
 - **Machine Learning Basics**: Designed and trained a simplified Multi-Variate Bernoulli Naive Bayes Classifier.
 - **Data Structures**: Utilized maps and sets to store, retrieve, and analyze training data efficiently.
-- **Collaborative Development**: Worked with a partner to design, debug, and test the system under strict project requirements.
+- **Collaborative Development**: Efficiently communicated and split tasks with a partner to design, debug, and test the system.
 
 ## **Key Features**
 - **Training**: Processes labeled data to calculate class probabilities and word likelihoods using training datasets.
