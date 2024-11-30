@@ -88,7 +88,6 @@ public:
         std::deque<Node*> nodesToCopy; // Deque acting as a stack to track nodes to copy
         
         // Create a new root node
-        //std::cout << size() << std::endl;
 
         nodesToCopy.push_back(other.root); // Push the root of the other pairing heap        
         
