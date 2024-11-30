@@ -1,46 +1,5 @@
 // Project identifier: 43DE0E0C4C76BFAA6D8C2F5AEAE0518A9C42CF4E
 
-//TUTORIAL TIPS
-//not super long... fingers crossed
-//go to heaps slides 
-//using a binary heap to create binary pq
-//look at heap slides and do what they do except translate three things:
-//slides use 1-based indexing, binary pq has a vector, so 0-based indexing
-//three methods, outlined in project spec
-//1. translate everything (hard way)
-//2. put dummy element (piece of garbage) in data vector at index 0
-//then make sure you're returning size - 1 and empty is 1 and never access element 0
-//hard to get right... how do you get data in there when you dont know what data type is?
-//3. in project spec: code for two functions called getElement
-//const and non-const versions
-//type in, dont copy from pdf file
-//data[getElement(i)]
-//now lets talk about using this->compare. in slides, you have if(a<b) //data, must use compare. dont have to use compare for indices
-//if(this->compare(getEl...,getEl...))
-//this->compare(a<b) is priority of a less than priority of b?
-//updatePriorities //HEAPIFY - in video (what video?), not slides
-//private member functions: fixUp() and fixDown()
-//when you do push, fixup. pop, fixdown. replace this value with last one and then call fix down
-//dont have separate thing called heapsize, just use underlying data vector
-//MELDING
-//can only meld things that have no siblings, no parents or previous, have to break these relationships
-//range based constructor is going to call push in a loop and copy values in
-//copy constructor, destructor, updatePriorities all use P1 approach
-//make deque. add starting location.  while !dq.empty(), get next from deque and add nearby to dque (child, sibling)
-//do something with current (delete for current)
-//on updatePriorities, never adding parent or prev. only look at child and sibling (avoid inf loop)
-//operator =()
-//lecture 6, search for best copy
-//use copy-swap method
-//updatePriorities - underlying priorities have changed. have to now tear apart one at a time and rebuild
-//cannot reset count to 0 or delete nodes. only pop and destructor can
-//take things out of deque, add nearby, break relationships
-//updateElt(). updateElt is given a pointer and a value. first change the value. theres only one bad node,
-//so dont call updatePriorities. just need to tear this tree and its subtree out
-//how you write updateElt will be really diff based on if you choose prev or parent
-//am i the leftmost in my level?
-//follow prev or parents and look at their child. if thats me, im the leftmost 
-
 #ifndef BINARYPQ_H
 #define BINARYPQ_H
 
