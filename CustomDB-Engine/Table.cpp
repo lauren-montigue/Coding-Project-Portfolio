@@ -27,22 +27,18 @@ void Table::create()
         if (colType == "bool")
         {
             metaData.emplace_back("default_name", EntryType::Bool); //constructs and pushes back
-            //std::cout << "bool" << std::endl;
         }
         if (colType == "string")
         {
             metaData.emplace_back("default_name", EntryType::String); //constructs and pushes back
-            //std::cout << "string" << std::endl;
         }
         else if (colType == "int")
         {
             metaData.emplace_back("default_name", EntryType::Int); //constructs and pushes back
-            //std::cout << "int" << std::endl;
         }
         else if (colType == "double")
         {
             metaData.emplace_back("default_name", EntryType::Double); //constructs and pushes back
-            //std::cout << "double" << std::endl;
         }
     }
 
@@ -62,27 +58,17 @@ void Table::create()
 
 void Table::insert(int numRowsInserting)
 {
-    //std::cout << "called table insert" << '\n';
-
-    //std::cout << "data size at start is " << data.size() << std::endl;
     data.reserve(numRows + numRowsInserting);
-
-    //std::cout << "total rows after insert should be " << numRows + numRowsInserting << std::endl;
 
      bool b;
      std::string s;
      int integer;
      double d;
 
-     //std::cout << "num cols: " << numCols << std::endl;
-     //std::cout << "num rows: " << numRows << std::endl;
-     //std::cout << "num rows inserting: " << numRowsInserting << std::endl;
-
     for (int i = 0; i < numRowsInserting; ++i) //looping through rows being inserted
     {
         std::vector <TableEntry> tempRow;
         tempRow.reserve(numCols);
-        //std::cout << "num cols is " << numCols << std::endl;
 
         for (int j = 0; j < numCols; ++j)
         {
@@ -92,8 +78,6 @@ void Table::insert(int numRowsInserting)
                
                 std::cin >> b;
 
-                //std::cout << b << " ";
-
                 TableEntry temp(b);
                 tempRow.emplace_back(b);
             }
@@ -101,7 +85,6 @@ void Table::insert(int numRowsInserting)
             {
                 std::cin >> s;
 
-                //std::cout << s << " ";
                 TableEntry temp(s);
                 tempRow.emplace_back(s);
             }
@@ -110,7 +93,6 @@ void Table::insert(int numRowsInserting)
                 
                 std::cin >> integer;
 
-                //std::cout << integer << " ";
                 TableEntry temp(integer);
                 tempRow.emplace_back(integer);
             }
@@ -119,16 +101,12 @@ void Table::insert(int numRowsInserting)
                 
                 std::cin >> d;
 
-                //std::cout << d << " ";
                 TableEntry temp(d);
                 tempRow.emplace_back(d);
             }
         }
         // Append full row
-        //std::cout << "size of temp row: " << tempRow.size() << std::endl;
         data.push_back(tempRow);
-        //std::cout << "current num rows: " << data.size() << std::endl; 
-        //std::cout << std::endl;
     }
     
     // update bst or hash if there is one:
@@ -168,9 +146,6 @@ void Table::insert(int numRowsInserting)
 
 void Table::printRow(const std::vector<size_t> &indicesToPrint, size_t currentRowIdx, bool quiet)
 {
-    //std::cout << "made it to printRow!" << std::endl;
-    //std::cout << "indicesToPrint.size(): " << indicesToPrint.size() << std::endl;
-    //std::cout << "currentRowIdx = " << currentRowIdx << std::endl;
     if (!quiet){
         for (size_t j = 0; j < indicesToPrint.size(); ++j)
         {
@@ -198,9 +173,6 @@ bool Table::printWhereHelper(const std::string& op, TableEntry value, TableEntry
 
 void Table::printAll(const std::vector<std::string> &listOfColNames, const std::vector<size_t> &indicesToPrint, bool quiet)
 {
-    //std::cout << "made it to table printAll!" << std::endl;
-    //std::cout << "listOfColNames.size() = " << listOfColNames.size() << std::endl;
-    //std::cout << "indicesToPrint.size() = " << indicesToPrint.size() << std::endl;
 
     if (!quiet)
     {
@@ -211,15 +183,9 @@ void Table::printAll(const std::vector<std::string> &listOfColNames, const std::
 
         std::cout << '\n';
     }
-    
-
-    //std::cout << "hello" << std::endl;
-
-    //std::cout << "num rows: " << numRows << std::endl;
 
     for (int row = 0; row < numRows; ++row)
     {
-        //std::cout << "hi there" << std::endl;
         printRow(indicesToPrint, row, quiet);        
     }
 
@@ -236,17 +202,13 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
 
     //find colIndex with that name
 
-    //std::cout << "how many cols in meta data? " << metaData.size() << std::endl;
-
     size_t colIndex = 0;
     bool found;
 
     for (size_t j = 0; j < metaData.size(); ++j)
     {
-        //std::cout << "col name: " << metaData[j].colName << std::endl;
         if (metaData[j].colName == colName)
         {
-            //std::cout << "okay yeah found the column " << std::endl;
             colIndex = j;
             found = true;
             break;
@@ -310,11 +272,9 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
         }
         else
         {
-            //std::cout << "using bst index for bool" << std::endl;
             // Use BST index
             if (op == ">")
             {
-                //std::cout << "calling greater than" << std::endl;
                 auto lowBound = indexBST.lower_bound(tableValueToCompare);
                 
                 if (lowBound != indexBST.end() && !(tableValueToCompare < lowBound->first))
@@ -336,7 +296,6 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
             }
             else if (op == "<") // less than
             {
-                //std::cout << "calling less than" << std::endl;
                 auto lowBound = indexBST.lower_bound(tableValueToCompare);
                 
                 auto it = indexBST.begin();
@@ -351,7 +310,6 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
             }
             else // equal to
             {
-                //std::cout << "calling equal to" << std::endl;
                 auto it = indexBST.find(tableValueToCompare);
 
                 if (it != indexBST.end())
@@ -402,10 +360,8 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
         else
         {
             // Use BST index
-            //std::cout << "using bst index for string" << std::endl;
             if (op == ">")
             {
-                //std::cout << "calling greater than" << std::endl;
                 auto lowBound = indexBST.lower_bound(tableValueToCompare);
                 
                 if (lowBound != indexBST.end() && !(tableValueToCompare < lowBound->first))
@@ -427,7 +383,6 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
             }
             else if (op == "<") // less than
             {
-                //std::cout << "calling less than" << std::endl;
                 auto lowBound = indexBST.lower_bound(tableValueToCompare);
                 auto it = indexBST.begin();
                 while (it != lowBound) {
@@ -440,7 +395,6 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
             }
             else // equal to
             {
-                //std::cout << "calling equal to" << std::endl;
                 auto it = indexBST.find(tableValueToCompare);
 
                 if (it != indexBST.end())
@@ -491,10 +445,8 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
         else
         {
             // Use BST index
-            //std::cout << "using bst index for int" << std::endl;
             if (op == ">")
             {
-                //std::cout << "calling greater than" << std::endl;
                 auto lowBound = indexBST.lower_bound(tableValueToCompare);
                 
                 if (lowBound != indexBST.end() && !(tableValueToCompare < lowBound->first))
@@ -516,7 +468,6 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
             }
             else if (op == "<") // less than
             {
-                //std::cout << "calling less than" << std::endl;
                 auto lowBound = indexBST.lower_bound(tableValueToCompare);
                 auto it = indexBST.begin();
                 while (it != lowBound) {
@@ -530,7 +481,6 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
             }
             else // equal to
             {
-                //std::cout << "calling equal to" << std::endl;
                 auto it = indexBST.find(tableValueToCompare);
 
                 if (it != indexBST.end())
@@ -581,11 +531,9 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
         else
         {
             // Use BST index
-            //std::cout << "using bst index for double" << std::endl;
 
             if (op == ">")
             {
-                //std::cout << "calling greater than" << std::endl;
                 auto lowBound = indexBST.lower_bound(tableValueToCompare);
 
                 if (lowBound != indexBST.end() &&!(tableValueToCompare < lowBound->first))
@@ -607,7 +555,6 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
             }
             else if (op == "<") // less than
             {
-                //std::cout << "calling less than" << std::endl;
                 auto lowBound = indexBST.lower_bound(tableValueToCompare);
                 auto it = indexBST.begin();
                 while (it != lowBound) {
@@ -621,7 +568,6 @@ void Table::printWhere(const std::vector<size_t> &indicesToPrint, const std::vec
             }
             else // equal to
             {
-                //std::cout << "calling  equal to" << std::endl;
                 auto it = indexBST.find(tableValueToCompare);
 
                 if (it != indexBST.end())
@@ -1016,7 +962,6 @@ void Table::generate()
 
 void Table::join(const Table& table2, bool quiet)
 {
-    //std::cout << "made it to table join" << std::endl;
     int numRowsPrinted = 0;
 
     bool found;
@@ -1031,12 +976,8 @@ void Table::join(const Table& table2, bool quiet)
     std::string where;
     std::cin >> where;
 
-    //std::cout << "where: " << where << std::endl;
-
     std::string colName1;
     std::cin >> colName1;
-
-    //std::cout << "colName1 " << colName1 << std::endl;
 
     char op;
     std::cin >> op;
@@ -1044,16 +985,12 @@ void Table::join(const Table& table2, bool quiet)
     std::string colName2;
     std::cin >> colName2;
 
-    //std::cout << "colName2 " << colName2 << std::endl;
-
     std::string theWordAnd, print;
     std::cin >> theWordAnd;
     std::cin >> print;
 
     int numColsToPrint;
     std::cin >> numColsToPrint;
-
-    //std::cout << "numColsToPrint: " << numColsToPrint << std::endl;
 
     size_t colIndex = 0;
 
@@ -1069,19 +1006,14 @@ void Table::join(const Table& table2, bool quiet)
         std::cin >> colName;
         std::cin >> whichTable;
 
-        //std::cout << "colName: " << colName << std::endl;
-        //std::cout << "whichTable: " << whichTable << std::endl;
-
         found = false;
 
         if (whichTable == 1)
         {
             for (size_t j = 0; j < metaData.size(); ++j)
             {
-                //std::cout << "col name: " << metaData[j].colName << std::endl;
                 if (metaData[j].colName == colName)
                 {
-                    //std::cout << "okay yeah found the column " << std::endl;
                     colIndex = j;
                     found = true;
                     break;
@@ -1101,10 +1033,8 @@ void Table::join(const Table& table2, bool quiet)
         {
             for (size_t j = 0; j < table2.metaData.size(); ++j)
             {
-                //std::cout << "col name: " << metaData[j].colName << std::endl;
                 if (table2.metaData[j].colName == colName)
                 {
-                    //std::cout << "okay yeah found the column " << std::endl;
                     colIndex = j;
                     found = true;
                     break;
@@ -1123,7 +1053,6 @@ void Table::join(const Table& table2, bool quiet)
         }
 
         tableColIndexPairs.push_back({whichTable, colIndex});
-        //std::cout << "pushing back " << whichTable << " " << colIndex << std::endl;
     }
 
     if (!quiet)
@@ -1146,10 +1075,8 @@ void Table::join(const Table& table2, bool quiet)
     // check if column from table 1 is in table 1
     for (size_t j = 0; j < metaData.size(); ++j)
     {
-        //std::cout << "col name: " << metaData[j].colName << std::endl;
         if (metaData[j].colName == colName1)
         {
-            //std::cout << "okay yeah found the column " << std::endl;
             colIndex1 = j;
             found = true;
             break;
@@ -1168,10 +1095,8 @@ void Table::join(const Table& table2, bool quiet)
     // check if column from table 2 is in table 2
     for (size_t j = 0; j < table2.metaData.size(); ++j)
     {
-        //std::cout << "col name: " << metaData[j].colName << std::endl;
         if (table2.metaData[j].colName == colName2)
         {
-            //std::cout << "okay yeah found the column " << std::endl;
             colIndex2 = j;
             found = true;
             break;
@@ -1191,7 +1116,6 @@ void Table::join(const Table& table2, bool quiet)
     if (table2.indextype != IndexType::HASH || colIndex2 != table2.colAssociatedWithIndex )
     {
         usingTempHash = true;
-        //std::cout << "creating hash table for " << table2.name << std::endl;
         for (size_t i = 0; i < table2.data.size(); ++i)
         {
             // Retrieve the corresponding value in 'colIndex' column for the current row
@@ -1206,17 +1130,14 @@ void Table::join(const Table& table2, bool quiet)
     if (usingTempHash){
         for (size_t i = 0; i < data.size(); ++i)
         {
-            //std::cout << "looping through row for " << name << std::endl;
 
             TableEntry tableValueToCompare = data[i][colIndex1];
-            //std::cout << data[i][colIndex1] << std::endl;
 
             // Use hash index
             auto it = indexTempHash.find(tableValueToCompare); 
                 
             if (it == indexTempHash.end()) 
             {   
-                //std::cout << "found no matches sorry :(" << std::endl;
                 continue;
             }
             
@@ -1224,7 +1145,6 @@ void Table::join(const Table& table2, bool quiet)
             for (size_t j : it->second)
             {
                 ++numRowsPrinted;
-                //std::cout << "looping through row for " << table2.name << std::endl;
 
                 for (int k = 0; k < numColsToPrint; ++k)
                 {
@@ -1247,17 +1167,14 @@ void Table::join(const Table& table2, bool quiet)
     {
         for (size_t i = 0; i < data.size(); ++i)
         {
-            //std::cout << "looping through row for " << name << std::endl;
 
             TableEntry tableValueToCompare = data[i][colIndex1];
-            //std::cout << data[i][colIndex1] << std::endl;
 
             // Use hash index
             auto it = table2.indexHash.find(tableValueToCompare);
                 
             if (it == table2.indexHash.end()) 
             {   
-                //std::cout << "found no matches sorry :(" << std::endl;
                 continue;
             }
             
@@ -1265,7 +1182,6 @@ void Table::join(const Table& table2, bool quiet)
             for (size_t j : it->second)
             {
                 ++numRowsPrinted;
-                //std::cout << "looping through row for " << table2.name << std::endl;
 
                 for (int k = 0; k < numColsToPrint; ++k)
                 {
@@ -1289,32 +1205,3 @@ void Table::join(const Table& table2, bool quiet)
     std::cout << "Printed " << numRowsPrinted << " rows from joining " << name << " to " << table2.name << '\n';
 
 }
-
-//INDICES
-
-//equality checks - hash index
-//< > ordered map (bst)
-
-//can use std:: lower bound, upper bound 
-//given an ordered map, can tell yo uin faster than linear time which index you need to loop to
-
-//generate makes the index that you can use in delete, join, printwhere
-
-//order to code:
-//write generate
-//then printwhere with index
-//break down into different operations
-//did you already generate a bst index?
-//if yes, then use. if no, then have to do brute force search (which you've already coded)
-
-//join tips:
-//prints everything that matches in those tables (equality check)
-//speed up : dont do O(n^2), go through all first table and if no hash index exists for second table, create temp hash index for second table
-
-//keep code structured, lots of if statements - think about helper functions
-
-//goal for friday: write printwhere, generate, delte
-
-//join is kind of its own thign
-
-//use all autograder submissions
