@@ -1,4 +1,4 @@
-# **ML Classifier**
+# **ML Forum Post Classifier**
 
 ## **Overview**
 The ML Classifier project applies natural language processing and machine learning techniques to classify Piazza posts based on their content. Using the "bag of words" model, this program analyzes past posts to predict their topic or author.
