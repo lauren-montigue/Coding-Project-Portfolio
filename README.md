@@ -10,4 +10,4 @@ All Makefiles were provided as part of the course. Any other files that were pro
 ## **Contents**
 Each project includes:
 - **A Detailed README**: Contains a project overview, key attributes, and an example workflow.
-- **Code Files**: Well-documented and organized for easy understanding.
+- **Code Files**: Commented for easy understanding.
