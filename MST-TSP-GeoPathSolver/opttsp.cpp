@@ -12,26 +12,6 @@
 #include "mst.h"
 #include "fasttsp.h"
 
-// visualize tool on autograder 2
-// can plot correct and your output
-
-// FROM ALISON:
-
-// generate fast tsp going into part C
-// pop back 
-// the way gen perms works is having full sequence, swapping last two, then second and third to last... basically going through all possible combos
-// give it path from part B (that's the path to pass in, maybe a vertex version)
-// code from ECAS session... if permutation length is equal to size, add to current path the distance from last one to 
-// have to add on length of returning back to start point to compare to best
-// bounding function is biggest part
-// actual branch stuff is genperms
-
-// integer N is length you're considering right now... can pass in N to end, can also just remake vector with those points
-// genperms is doing swaps within growing vector
-// start by passing 1??
-// in that for loop, its self recursive and adds on 1 every time
-// calculate sqrt as few times as possible, dont use for comparing distances, only use when adding to path length
-
 void OPTTSP::opt(const std::vector<Vertex> &vertices, int mapSize)
 {
   FASTTSP optfast;
