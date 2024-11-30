@@ -11,7 +11,6 @@
 #include <algorithm>
 #include <unordered_map>
 
-//TODO print helpful message
 void SillyQL::printHelp(char *argv[]) {
   std::cout << "Usage: " << argv[0] << " [-m resize|reserve|nosize] | -h\n";
   std::cout << "This program is to help you learn command-line processing,\n";
@@ -59,9 +58,7 @@ void SillyQL::readInput(){
 
   do{
     std::cout << "% ";
-    //std::cout << "lets cin something new" << std::endl;
     std::cin >> command; 
-    //std::cout << command << std::endl;
 
     if (command[0] == '#')
     {
@@ -97,8 +94,6 @@ void SillyQL::readInput(){
       std::cin >> from;
       std::cin >> tableName;
 
-      //std::cout << "table name: " << tableName << std::endl;
-
       print(tableName);
     }
 
@@ -115,7 +110,6 @@ void SillyQL::readInput(){
 
     else if (command == "JOIN")
     {
-      //std::cout << "calling join" << std::endl;
 
       std::string tableName1;
       std::string theWordAnd;
@@ -197,24 +191,16 @@ void SillyQL::remove(std::string &tableName){
 
 void SillyQL::insert(std::string &tableName)
 {
-  //std::cout << "made it to sillyQL insert" << std::endl;
-
-  //std::cout << "table name is:" << tableName << "got it?" << std::endl;
 
   int numRowsInserting;
   std::cin >> numRowsInserting;
-
-  //std::cout << "num rows: " << numRowsInserting << " ";
-
+  
   std::string rows;
   std::cin >> rows;
-
-  //std::cout << "rows: " << rows << std::endl;
 
   auto it = tableHashMap.find(tableName);
   if (it != tableHashMap.end())
   {
-    //std::cout << "okay table is in hash map" << std::endl;
 
     int originalLength = it->second.numRows;
 
@@ -339,14 +325,12 @@ void SillyQL::generate(std::string &tableName)
 
 void SillyQL::join(std::string &tableName1, std::string &tableName2)
 {
-  //std::cout << "called sillyQL join" << std::endl;
 
   auto it1 = tableHashMap.find(tableName1);
   auto it2 = tableHashMap.find(tableName2);
 
   if (it1 != tableHashMap.end() && it2 != tableHashMap.end())
   {
-    //std::cout << "calling table join" << std::endl;
     it1->second.join(it2->second, quiet);
   }
   else if (it2 != tableHashMap.end())
