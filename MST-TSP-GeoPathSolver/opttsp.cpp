@@ -45,7 +45,6 @@ void OPTTSP::genPerms(size_t permLength) {
     double currentPathLength = opttsp_curr_path_len + std::sqrt(distanceSquared(opttsp_path[permLength - 1], opttsp_path[0]));
 
     // Define a small epsilon value
-    // TODO: figure this part out... because it shouldn't have been evaluating to true regardless
     const double epsilon = 1e-6; // Adjust as needed
 
     // Update best path if the current path is shorter
@@ -156,6 +155,3 @@ void OPTTSP::printTSP()
     
     std::cout << '\n';
 }
-
-// debug for the rest of the day... use your test cases and the spec to debug part C
-// good luck!!
