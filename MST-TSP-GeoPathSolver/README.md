@@ -30,3 +30,48 @@ This project showcases my understanding of graph algorithms, heuristic methods, 
 - **Output and Metrics**:
   - Provides the TSP path and total cost for each algorithm.
   - Measures algorithmic performance through runtime and accuracy.
+ 
+## **Example Workflow**
+### **Input**
+The input is provided as a text file, where the first line specifies the number of vertices, and each subsequent line contains the coordinates and category of a vertex (main campus, medical campus, or border):
+
+```plaintext
+5
+0.0 0.0 main
+2.0 0.0 medical
+1.0 1.0 border
+0.0 2.0 main
+2.0 2.0 medical
+```
+
+### **Output**
+```plaintext
+The output varies based on the algorithm (MST, FastTSP, or OptTSP) and shows the results of each computation.
+```
+
+#### **Minimum Spanning Tree**
+```plaintext
+4.24
+0 1
+1 2
+2 3
+2 4
+```
+
+#### **Fast Traveling Salesperson Problem (FastTSP)**
+```plaintext
+4.24
+0 1
+1 2
+2 3
+2 4
+```
+
+#### **Optimal Traveling Salesperson Problem (OptTSP)**
+```plaintext
+4.24
+0 1
+1 2
+2 3
+2 4
+```
