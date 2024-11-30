@@ -5,7 +5,7 @@ The Lexical Morph Search project determines whether a sequence of valid word tra
 
 This project is particularly significant to me as it is my first without any starter code. Every file, function, and feature was designed and implemented from scratch, showcasing my ability to create an end-to-end system based solely on the project specifications.
 
-As this project included additional formatting rules for input files to increase complexity, I have only included the output here to clarify the purpose and functionality of the project.
+As this project included additional formatting rules for input files to increase complexity, I have only included the output here to clarify the functionality of the project.
 
 ## **Skills Demonstrated**
 - **Graph Theory and Traversal**: Modeled word transformations as graph edges and implemented traversal algorithms (stack-based DFS and queue-based BFS) to find valid transformation paths.
