@@ -27,13 +27,6 @@ std::vector <anythingExtra> anythingExtraWhat;
 
 class mineEscape {
 private:
-    //TODO: order most efficiently
-    // Private member variables
-
-    //TODO: implement this but somehow avoid the seg fault
-    //int numTilesCleared = 0;
-    //int amountRubbleCleared = 0;
-
     struct mapEntry {
         bool beenDiscovered = false;
         bool beenInvestigated = false;
@@ -48,14 +41,6 @@ private:
     uint32_t sideLength;
 
     int statsArgument = 0;
-
-    //in constructor have three variables to set there, three variables plus stats number
-
-    //TODO: what is the correct way to handle these options? enum class? probs not. reference P1.
-    //could potentially be easier just to have them as class variables... like this.
-    //bool statsFlag = false;
-    //bool medianFlag = false;
-    //bool verboseFlag = false;
 
     // Helper function to print help message
     static void printHelp(char *argv[]);
