@@ -28,12 +28,6 @@ As this project included additional formatting rules for input files to increase
 - **Input Parsing**:
   - Reads from a dictionary file and validates start and end words.
 
-## **Example Usage**
-### **Command-Line Example**
-```bash
-./lexical_morph_search dictionary.txt -b "start" -e "end" -o W -q -c -l -p
-```
-
 ### **Example Output**
 
 #### **Word Mode**
