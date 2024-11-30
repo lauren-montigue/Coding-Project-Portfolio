@@ -86,13 +86,6 @@ public:
     IndexType indextype = IndexType::NONE;
     size_t colAssociatedWithIndex;
 
-    //variable indicating which case were in - no index, hash index, bst index
-    //index only appears on certain columns
-    //another variable indicating which column
-    //another unordered map<tableEntry, X> hashidx
-    // std;::map<tsbleEntry, X> bstIdx
-    // think about how these cooperate with printwhere
-
     // Constructor to initialize the table with a given number of columns
     Table(const std::string& tableName, int numCols);
 
