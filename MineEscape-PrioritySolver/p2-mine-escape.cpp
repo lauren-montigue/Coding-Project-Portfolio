@@ -57,8 +57,6 @@ void mineEscape::getOptions(int argc, char * argv[], Options &options) {
           statsArgument = std::stoi(optarg);
           } else {
               // Handle the case where optarg is null
-              //TODO happens for stats as short but not long?? what the fuck
-              // This could involve setting a default value for statsArgument or displaying an error message
               std::cerr << "Error: optarg is null." << std::endl;
               // Optionally, exit the program or set a default value for statsArgument
           }
@@ -510,51 +508,32 @@ void mineEscape::getOut(const Options &options){
       
     }
 
-
-
-
-
-
-
-
-
-
-
     //CASE THAT ITS NOT TNT
     else
     {
-      //std::cout << "no tnt, no worries" << endl;
 
       if (rowToInvestigate != 0 && map2D[rowToInvestigate - 1][colToInvestigate].beenDiscovered == false)
       {
         primaryPQ.push(PQEntry(map2D[rowToInvestigate - 1][colToInvestigate].num,rowToInvestigate - 1,colToInvestigate));
         map2D[rowToInvestigate - 1][colToInvestigate].beenDiscovered = true;
-
-        //std::cout << "pushed " << upNeighbor.rubble << " at [" << upNeighbor.row << "," << upNeighbor.col << "]" << endl;
       }
 
       if (rowToInvestigate != sideLength - 1 && map2D[rowToInvestigate + 1][colToInvestigate].beenDiscovered == false)
       {
         primaryPQ.push(PQEntry(map2D[rowToInvestigate + 1][colToInvestigate].num, rowToInvestigate + 1, colToInvestigate));
         map2D[rowToInvestigate + 1][colToInvestigate].beenDiscovered = true;
-
-        //std::cout << "pushed " << downNeighbor.rubble << " at [" << downNeighbor.row << "," << downNeighbor.col << "]" << endl;
       }
 
       if (colToInvestigate != 0 && map2D[rowToInvestigate][colToInvestigate - 1].beenDiscovered == false)
       {
         primaryPQ.push(PQEntry(map2D[rowToInvestigate][colToInvestigate - 1].num, rowToInvestigate, colToInvestigate - 1));
         map2D[rowToInvestigate][colToInvestigate - 1].beenDiscovered = true;
-
-        //std::cout << "pushed " << leftNeighbor.rubble << " at [" << leftNeighbor.row << "," << leftNeighbor.col << "]" << endl;
       }
 
       if (colToInvestigate != sideLength - 1 && map2D[rowToInvestigate][colToInvestigate + 1].beenDiscovered == false)
       {
         primaryPQ.push(PQEntry(map2D[rowToInvestigate][colToInvestigate + 1].num, rowToInvestigate, colToInvestigate + 1));
         map2D[rowToInvestigate][colToInvestigate + 1].beenDiscovered = true;
-
-        //std::cout << "pushed " << rightNeighbor.rubble << " at [" << rightNeighbor.row << "," << rightNeighbor.col << "]" << endl;
       }
     }
     
