@@ -9,7 +9,6 @@ While some starter code (e.g., project scaffolding and helper classes) was provi
 - **`SortedPQ.h`**: Sorted array-based priority queue.
 - **`BinaryPQ.h`**: Binary heap-based priority queue.
 - **`PairingPQ.h`**: Pairing heap-based priority queue.
-- **Test Files**: Wrote custom tests to validate the functionality of each PQ implementation.
 
 All other files in this project were provided as part of the starter code.
 
