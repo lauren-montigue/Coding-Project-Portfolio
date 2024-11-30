@@ -9,7 +9,6 @@
 class FASTTSP {
 public:
     // continue pushing back new points (indices) into this vector
-    // is a vector the best representation? will have to put points in between and shift over elements... maybe linked list
     std::vector <Vertex> pathTraveled;
     double totalDistance = 0;
 
