@@ -1,19 +1,13 @@
 // Project identifier: 43DE0E0C4C76BFAA6D8C2F5AEAE0518A9C42CF4E
 
-
 #ifndef UNORDEREDPQ_H
 #define UNORDEREDPQ_H
 
 #include "Eecs281PQ.h"
 
-
 // A specialized version of the priority queue ADT that is implemented with
 // an underlying unordered array-based container that is linearly searched
 // for the most extreme element every time it is needed.
-
-// TODO: Read and understand this priority queue implementation!
-// Pay particular attention to how the constructors and findExtreme()
-// are written, especially the use of this->compare.
 
 template<typename TYPE, typename COMP_FUNCTOR = std::less<TYPE>>
 class UnorderedPQ : public Eecs281PQ<TYPE, COMP_FUNCTOR> {
