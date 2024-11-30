@@ -1,47 +1,35 @@
-We've included the test from the project specification,
-spec-test.txt, along without output for all three modes.
+# **MST-TSP OptTSP**
 
-There are several other input files: sample-ab.txt, sample-c.txt,
-sample-d.txt, sample-e.txt, and sample-f.txt.
-  sample-ab.txt has 10000 vertices, sample-c.txt and sample-d.txt
-  each have 30, sample-e.txt has 11 vertices.
+## **Overview**
+The MST-TSP OptTSP project implements algorithms to solve variants of the Traveling Salesperson Problem (TSP) using graph theory and optimization techniques. The project calculates a Minimum Spanning Tree (MST) to approximate TSP solutions and further refines these results using optimization techniques (OptTSP). 
 
-There are output files for sample-ab.txt run with MST and FASTTSP,
-while samples c-e were run with all 3 modes.
+This project highlights my ability to work with advanced graph algorithms and implement performance-optimized solutions for computationally intensive problems.
 
-The file sample-d.txt is the same as sample-c.txt, EXCEPT
-that it has been shifted up and to the right by 50, putting all
-vertices in Quadrant 1 of the graph.  If you get the same answers
-when running samples c and d in MST mode, and sample c output is
-wrong, it's because you forgot to account for transitioning from
-one region to another.  When running OPTTSP, if you get sample d
-right but sample c wrong, it's because you forgot that in FAST
-and OPT, you DO NOT consider the border between regions.
+## **Skills Demonstrated**
+- **Graph Algorithms**: Implemented Minimum Spanning Tree (MST) construction to approximate TSP.
+- **Optimization Techniques**: Designed and implemented OptTSP to refine initial solutions using pruning and recursion.
+- **Algorithm Analysis**: Compared performance and solution accuracy of MST-TSP and OptTSP.
+- **Performance Engineering**: Optimized recursive algorithms and graph traversals to handle large input sizes efficiently.
+- **Data Structures**: Utilized adjacency matrices, vectors, and sets for efficient graph representation and traversal.
 
-The file sample-e.txt has 11 vertices selected from sample d;
-the vertices were selected so that many fast and optimal solutions
-give different output.  This test case should help with debugging
-OPTTSP mode.
+## **Key Features**
+- **MST-TSP Approximation**:
+  - Constructs a Minimum Spanning Tree (MST) from the input graph.
+  - Traverses the MST to approximate a TSP solution using a pre-order walk.
+- **OptTSP Optimization**:
+  - Refines the TSP solution by recursively exploring alternative routes.
+  - Includes pruning techniques to eliminate suboptimal paths early.
+- **Input Flexibility**:
+  - Supports graphs of various sizes and structures.
+  - Reads weighted adjacency matrices for graph representation.
+- **Performance Insights**:
+  - Outputs runtime and quality comparisons for MST-TSP and OptTSP solutions.
 
-The file sample-e-debug-output.txt is there to help you debug
-Part C (mode OPTTSP) with sample-e.txt as input.  Inside of that
-file, we show you how to produce the output discussed in the video,
-what the initial path was, the best path length (from part B), and
-the debugging output in a large table.
-
-Every line of the table shows the current path, permLength
-(column PL), the current running cost (the black region from the
-lecture slides), arm 1 and arm 2 (the blue connecting arms from
-the slides), the MST cost (gray in the slides), and the total
-(black + blue + gray).
-
-If you start with the same path and the same best cost so far,
-and get different results than this table, it should be easy
-to identify the first line that's wrong, which value is wrong,
-and then narrow down your debugging focus.
-
-The file sample-f.txt is just like sample-e.txt, except that it
-DOES have locations in all four quadrants!  If you get different
-output for sample-e and sample-f for FASTTSP or OPTTSP, you know
-that the problem lies in using the distance calculation from
-Part A when you shouldn't.
+## **Example Output**
+### **Input**
+```plaintext
+Graph (Adjacency Matrix):
+0  2  9 10
+2  0  6  4
+9  6  0  8
+10 4  8  0
