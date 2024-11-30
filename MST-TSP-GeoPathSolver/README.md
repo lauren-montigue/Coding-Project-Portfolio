@@ -1,13 +1,13 @@
 # **MST TSP Geopath Solver**
 
 ## **Overview**
-The vertices in this project are uniquely categorized into main campus, medical campus, or border locations, introducing an additional adjacency constraint. While vertices within the same category are considered directly connected, connections between main and medical campuses must go through border locations. The MST-TSP OptTSP project explores three key algorithms to solve and optimize the Traveling Salesperson Problem (TSP):
+The vertices in this project are categorized into main campus, medical campus, or border locations, introducing an adjacency constraint to the Traveling Salesperson Problem (TSP). While vertices within the same category are considered directly connected, connections between main and medical campuses must go through border locations. The MST-TSP OptTSP project explores three key algorithms to solve and optimize the TSP:
 
 1. **MST**: Uses a Minimum Spanning Tree (MST) to approximate TSP solutions.
 2. **FASTTSP**: Constructs a near-optimal TSP solution using a heuristic insertion method.
 3. **OptTSP**: Improves TSP solutions from FASTTSP with a combination of permutation generation and pruning (branch-and-bound) strategies.
 
-This project showcases my understanding of graph algorithms, heuristic methods, and optimization techniques to tackle computationally complex problems. All files in this project are my own work.
+All files in this project are my own work. 
 
 ## **Skills Demonstrated**
 - **Graph Algorithm Implementation**: Designed Prim's Algorithm for MST construction and applied it to approximate TSP solutions.
@@ -31,47 +31,3 @@ This project showcases my understanding of graph algorithms, heuristic methods, 
   - Provides the TSP path and total cost for each algorithm.
   - Measures algorithmic performance through runtime and accuracy.
  
-## **Example Workflow**
-### **Input**
-The input is provided as a text file, where the first line specifies the number of vertices, and each subsequent line contains the coordinates and category of a vertex (main campus, medical campus, or border):
-
-```plaintext
-5
-0.0 0.0 main
-2.0 0.0 medical
-1.0 1.0 border
-0.0 2.0 main
-2.0 2.0 medical
-```
-
-### **Output**
-```plaintext
-The output varies based on the algorithm (MST, FastTSP, or OptTSP) and shows the results of each computation.
-```
-
-#### **Minimum Spanning Tree**
-```plaintext
-4.24
-0 1
-1 2
-2 3
-2 4
-```
-
-#### **Fast Traveling Salesperson Problem (FastTSP)**
-```plaintext
-4.24
-0 1
-1 2
-2 3
-2 4
-```
-
-#### **Optimal Traveling Salesperson Problem (OptTSP)**
-```plaintext
-4.24
-0 1
-1 2
-2 3
-2 4
-```
