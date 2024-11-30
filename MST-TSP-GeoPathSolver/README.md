@@ -1,7 +1,7 @@
 # **MST TSP Geopath Solver**
 
 ## **Overview**
-The MST-TSP OptTSP project explores three key algorithms to solve and optimize the Traveling Salesperson Problem (TSP):
+The vertices in this project are uniquely categorized into main campus, medical campus, or border locations, introducing an additional adjacency constraint. While vertices within the same category are considered directly connected, connections between main and medical campuses must go through border locations. The MST-TSP OptTSP project explores three key algorithms to solve and optimize the Traveling Salesperson Problem (TSP):
 
 1. **MST**: Uses a Minimum Spanning Tree (MST) to approximate TSP solutions.
 2. **FASTTSP**: Constructs a near-optimal TSP solution using a heuristic insertion method.
