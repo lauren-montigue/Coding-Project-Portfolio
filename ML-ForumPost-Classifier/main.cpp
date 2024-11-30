@@ -9,9 +9,6 @@
 
 using namespace std;
 
-//@emilywal love u shawty
-//love u more <3
-
 class Classifier
 {
 private:
