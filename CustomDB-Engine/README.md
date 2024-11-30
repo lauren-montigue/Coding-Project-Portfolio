@@ -3,6 +3,8 @@
 ## Overview
 Silly QL is a lightweight database engine that is built to explore the foundational concepts of database systems, including query parsing, data storage, and retrieval. This project helped me gain an understanding of how databases operate under the hood and reflects my ability to design efficient, modular systems.
 
+TableEntry.h and TableEntry.cpp were provided as starter files, but all other work on this project is my own.
+
 ## **Skills Demonstrated**
 - **Database Design**: Built a framework for SQL-like operations such as creating, inserting, printing, and joining tables.
 - **Algorithm Development**: Implemented efficient query parsing, data storage, and retrieval mechanisms using C++.
