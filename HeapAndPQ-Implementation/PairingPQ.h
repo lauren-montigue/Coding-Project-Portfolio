@@ -1,43 +1,5 @@
 // Project identifier: 43DE0E0C4C76BFAA6D8C2F5AEAE0518A9C42CF4E
 
-//basic idea: pairing heap that produces pairing pq
-//all held together with nodes. every node has a child pointer and a sibling pointer
-//then one more pointer of your choice: parent or previous.
-//node never has higher priority than its parent
-//no vector or deque of child pointers
-//root pointer that points to a node. root cannot have sibling or parent
-//add member variables yourself - root, number of nodes (dont call it size, there will be a member function called size)
-//once you add member variables, modify all constructors (default, range based, copy)
-//to be valid, all three constructors must initialize all to nullptr and zero
-//parent or previous (distinciton at 30:00) important for updateElt
-//meld and anyone that calls it - check for proper use of parent or previous
-//DONT: use recursion. lol wasnt going to. never think of it.
-//push is simple - just calls addNode, which depends on meld
-//meld is given two node pointers and return another node pointer
-//meld says im putting these two pairing heaps together
-//parameters are essentially the roots so they must have no parent/prev and no sibling
-//push - create NEW new Node . then root can be that. s
-//push. create new Node with 81 and call meld with root and new Node
-//now meld has to figure out which of these should be root? calls this->compare
-//if (this->compare(a->elt,b->elt)). if returns true, second should be root
-//now the two nodes have to recognize each other as parent and child. then return pointer to bigger one.
-//add node will change root, NOT meld
-//who could call meld with a nullptr in theory? make sure this function deals w nullptr so meld doesnt have to
-//do that check and it can be faster
-//can only update elt with a higher priority, NOT lower
-//when you pop, there could be multiple siblings so you need to choose highest priority sibling to be new root
-//how do we do this? delete node and point to direct child
-//make a deque of node pointers
-//now determine new root and PAIR
-//cant just keep melding. horrible efficiency.
-//now do multi pass. easier to code. 
-//if you wanted to do two pass. could meld two then the next two then maybe you end up with one extra. right to left 
-//to put in and left to right to take out. thats the two passes
-//now lets look at multi pass
-//take two things, meld, and push to the back. then the next thing will be the end. circular until you get everything in your meld
-//
-
-
 #ifndef PAIRINGPQ_H
 #define PAIRINGPQ_H
 
