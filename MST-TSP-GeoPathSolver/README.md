@@ -1,7 +1,7 @@
 # **MST-TSP OptTSP**
 
 ## **Overview**
-The MST-TSP OptTSP project implements algorithms to solve variants of the Traveling Salesperson Problem (TSP) using graph theory and optimization techniques. The project calculates a Minimum Spanning Tree (MST) to approximate TSP solutions and further refines these results using optimization techniques (OptTSP). 
+The MST-TSP OptTSP project implements algorithms to solve variants of the Traveling Salesperson Problem (TSP) using graph theory and optimization techniques. The project calculates a Minimum Spanning Tree (MST) to approximate TSP solutions and further refines these results using branch-and-bound optimization.
 
 This project highlights my ability to work with advanced graph algorithms and implement performance-optimized solutions for computationally intensive problems.
 
