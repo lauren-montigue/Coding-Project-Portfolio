@@ -1,31 +1,5 @@
 // Project identifier: 43DE0E0C4C76BFAA6D8C2F5AEAE0518A9C42CF4E
 
-//Do sorted, then binary, then pairing
-//Dont wait to start understanding pairing
-
-//all pqs have two constructors: default and range-based
-//default: empty pq
-//range-based: two iterators - start, end that point somewhere (inclusive, exclusive)
-//for sorted pq, look at unorderedpq (useful - what does unordered pq do to get data from the two iterators into the data vector?
-//then need to do more because now has to be in order)
-//sorted and binary - operator= and copy constructor dont need bc vector alr has them
-
-//SORTED PQ
-//be careful of complexities of different operations
-//sorted push is O(n)
-//want to get it to the right place in the vector
-//DONT WRITE LOOPS FOR SORTED PQ, use pieces of the stl
-//something in stl that says this is the right spot... so maybe use an iterator
-//vector member function called insert
-//update priorities - just using sort
-//when you call stl functions, need optional parameters
-//however if underlying data type has special comparison, must give to stl funciton
-//using this->compare (comes from EECS281PQ - the base class)
-//sorted pq is templated class that inherits a templated class, dependent context, so say this->compare
-//
-
-
-
 #ifndef SORTEDPQ_H
 #define SORTEDPQ_H
 
