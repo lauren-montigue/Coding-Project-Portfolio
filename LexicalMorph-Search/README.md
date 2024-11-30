@@ -5,6 +5,8 @@ The Lexical Morph Search project determines whether a sequence of valid word tra
 
 This project is particularly significant to me as it is my first without any starter code. Every file, function, and feature was designed and implemented from scratch, showcasing my ability to create an end-to-end system based solely on the project specifications.
 
+As this project included additional formatting rules for input files to increase complexity, I have only included the output here to clarify the purpose and functionality of the project.
+
 ## **Skills Demonstrated**
 - **Graph Theory and Traversal**: Modeled word transformations as graph edges and implemented traversal algorithms (stack-based DFS and queue-based BFS) to find valid transformation paths.
 - **Algorithmic Design**: Created efficient rules for word transformations, including letter swaps, additions, deletions, and replacements.
@@ -32,10 +34,13 @@ This project is particularly significant to me as it is my first without any sta
 ./lexical_morph_search dictionary.txt -b "start" -e "end" -o W -q -c -l -p
 ```
 
-### **Input Example**
+### **Example Output**
+
+#### **Word Mode**
 ```plaintext
-Dictionary: [start, stark, stack, shack, slack, end]
-Start Word: start
-End Word: end
-Options: -o W (word mode), -q (queue for BFS), -c (change), -l (length), -p (swap)
-```
+Words in morph: 5
+start
+strat
+srat
+rat
+mat
