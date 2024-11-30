@@ -1,35 +1,42 @@
 # **MST-TSP OptTSP**
 
 ## **Overview**
-The MST-TSP OptTSP project implements algorithms to solve variants of the Traveling Salesperson Problem (TSP) using graph theory and optimization techniques. The project calculates a Minimum Spanning Tree (MST) to approximate TSP solutions and further refines these results using branch-and-bound optimization.
+The MST-TSP OptTSP project explores three key algorithms to solve and optimize the Traveling Salesperson Problem (TSP), a fundamental challenge in graph theory:
 
-This project highlights my ability to work with advanced graph algorithms and implement performance-optimized solutions for computationally intensive problems.
+1. **MST**: Uses a Minimum Spanning Tree (MST) to approximate TSP solutions.
+2. **FASTTSP**: Constructs a near-optimal TSP solution using the arbitrary insertion method.
+3. **OPTTSP**: Improves TSP solutions from FASTTSP with a combination of permutation generation and pruning strategies.
+
+This project showcases my understanding of graph algorithms, heuristic methods, and optimization techniques to tackle computationally complex problems.
 
 ## **Skills Demonstrated**
-- **Graph Algorithms**: Implemented Minimum Spanning Tree (MST) construction to approximate TSP.
-- **Optimization Techniques**: Designed and implemented OptTSP to refine initial solutions using pruning and recursion.
-- **Algorithm Analysis**: Compared performance and solution accuracy of MST-TSP and OptTSP.
-- **Performance Engineering**: Optimized recursive algorithms and graph traversals to handle large input sizes efficiently.
-- **Data Structures**: Utilized adjacency matrices, vectors, and sets for efficient graph representation and traversal.
+- **Graph Algorithm Implementation**: Designed Prim's Algorithm for MST construction and applied it to approximate TSP solutions.
+- **Heuristic Development**: Utilized Arbitrary Insertion to quickly generate near-optimal TSP paths in FASTTSP.
+- **Optimization via Pruning**: Developed a recursive solution for OptTSP that leverages promising paths and discards non-optimal candidates based on dynamic bounds.
+- **Recursive Problem-Solving**: Implemented efficient backtracking and path evaluation to refine solutions.
+- **Mathematical Computing**: Calculated Euclidean distances, dynamic costs, and lower bounds to evaluate path viability.
 
 ## **Key Features**
 - **MST-TSP Approximation**:
-  - Constructs a Minimum Spanning Tree (MST) from the input graph.
-  - Traverses the MST to approximate a TSP solution using a pre-order walk.
+  - Constructs a Minimum Spanning Tree (MST) using Prim's Algorithm.
+  - Approximates TSP solutions with a pre-order traversal of the MST.
+- **FASTTSP (Arbitrary Insertion)**:
+  - Greedy insertion heuristic minimizes the incremental cost of adding vertices to the TSP path.
+  - Produces a near-optimal path with lower computational overhead.
 - **OptTSP Optimization**:
-  - Refines the TSP solution by recursively exploring alternative routes.
-  - Includes pruning techniques to eliminate suboptimal paths early.
-- **Input Flexibility**:
-  - Supports graphs of various sizes and structures.
-  - Reads weighted adjacency matrices for graph representation.
-- **Performance Insights**:
-  - Outputs runtime and quality comparisons for MST-TSP and OptTSP solutions.
+  - Permutation generation refines the path order to optimize TSP solutions.
+  - Prunes suboptimal paths early by dynamically calculating lower bounds.
+  - Combines MST-derived bounds with arm-length calculations to improve efficiency.
+- **Output and Metrics**:
+  - Provides the TSP path and total cost for each algorithm.
+  - Measures algorithmic performance through runtime and accuracy.
 
 ## **Example Output**
+
 ### **Input**
 ```plaintext
-Graph (Adjacency Matrix):
-0  2  9 10
-2  0  6  4
-9  6  0  8
-10 4  8  0
+Vertices:
+0: (0, 0), CampusType: kCampusA
+1: (0, 3), CampusType: kCampusB
+2: (4, 0), CampusType: kBorder
+3: (4, 3), CampusType: kCampusA
