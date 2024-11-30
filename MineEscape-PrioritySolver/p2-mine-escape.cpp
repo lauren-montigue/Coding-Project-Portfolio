@@ -1,33 +1,5 @@
 // Project Identifier: 19034C8F3B1196BF8E0C6E1C0F973D2FD550B88F
 
-//read input into a 2D vector
-//vector<vector<Type>> map2D
-//map2D.resize(numRows, vector<Type>(numCols))
-//search for the word streamlined on lecture 7 slides - for what part is this?
-//what goes into priority queue needs to have rubble, row number and column number (for tie breaking)
-//dont use pointers
-//part b will have pointers lollll
-//lots of data structures: vector of vectors, priority queue, functor that helps priority queue
-//priority_queue<PQType, vector<PQType>, PQFunctor> primaryPQ;
-//if tnt, need a second pq, almost like an inner for loop
-//example in spec is super helpful
-//work on verbose mode as you go, helpful for debugging
-//add stats and mean median mode at end, itll just be adding some if statements
-//fine if you have a container for this ^ stuff even if its not on, wont take up much memory if empty
-
-//OUTLINE
-
-//UNDERSTAND
-//mine escape
-//parking heap -> pairing PQ
-
-//CODE
-//A: command line
-//A: read the input (2D vector)
-//B: sortedPQ (unorderedPQ.h)
-//A: PQ (primaryPQ)
-//B: binaryPQ
-//come to proffice hours for pairing pq
 
 #include "p2-mine-escape.h"
 #include "P2random.h"
@@ -121,7 +93,6 @@ void mineEscape::readInput() {
 
     if (mode == "M") {
         // Process Map mode
-        //std::cout << "In map mode" << endl;
 
         // Read side length and starting position
         cin >> junk >> sideLength >> junk >> rowStart >> colStart;
@@ -133,11 +104,8 @@ void mineEscape::readInput() {
             exit(1);
         }
 
-        //std::cout << "Side Length: " << sideLength << endl;
-        //std::cout << "Starting Position: (" << rowStart << ", " << colStart << ")" << endl;
     } else if (mode == "R") {
         // Process Pseudorandom mode
-        //std::cout << "In pseudorandom mode" << endl;
 
         // Read parameters for pseudorandom generation
         uint32_t seed;
@@ -152,9 +120,6 @@ void mineEscape::readInput() {
             cerr << "Error: Row or column number is out of bounds." << endl;
             exit(1);
         }
-
-        //std::cout << "Side Length: " << sideLength << endl;
-        //std::cout << "Starting Position: (" << rowStart << ", " << colStart << ")" << endl;
 
         // Generate map based on pseudorandom parameters
         P2random::PR_init(ss, sideLength, seed, max_rubble, likelihood_tnt_denominator);
@@ -184,8 +149,6 @@ void mineEscape::readInput() {
             //cout << "pushed back: " << entry.num << " at [" << row << "," << col << "]" << endl;
         }
     }
-
-    //std::cout << "Finished reading input" << endl;
 }
 
 void mineEscape::balanceHeaps(priority_queue<int>& maxHeap, priority_queue<int, vector<int>, greater<int>>& minHeap) {
@@ -218,8 +181,6 @@ void mineEscape::balanceHeaps(priority_queue<int>& maxHeap, priority_queue<int, 
 
 void mineEscape::getOut(const Options &options){
 
-  //std::cout << "reached getOut" << endl;
-
   //data structures for median
   std::priority_queue<int> medianMaxHeap; // Max heap for the lower half
   std::priority_queue<int, std::vector<int>, std::greater<int>> medianMinHeap;
@@ -249,14 +210,11 @@ void mineEscape::getOut(const Options &options){
   //inclusive ors ensure that corners are included
   while (!primaryPQ.empty() && !reachedEdge)
   {
-    //std::cout << "not empty and not reached edge" << endl;
 
     //if thing at top was pushed before it was later detonated by TNT and pushed again and discovered, ignore it
     if (map2D[primaryPQ.top().row][primaryPQ.top().col].beenInvestigated == true)
     {
-      //std::cout << "TNT already blew this up so discard it" << endl;
       primaryPQ.pop();
-      //TODO: consider case where now PQ is empty
     }
 
     //START OF INVESTIGATION OF TOP OF PRIMARYPQ
@@ -265,13 +223,9 @@ void mineEscape::getOut(const Options &options){
     colToInvestigate = primaryPQ.top().col;
     numInInvestigated = primaryPQ.top().rubble;
 
-    //std::cout << "investigating " << numInInvestigated << " at [" << rowToInvestigate << "," << colToInvestigate << "]" << endl;
-
     //take out of priority queue
-    //std::cout << "popping " << numInInvestigated << " at [" << rowToInvestigate << "," << colToInvestigate << "]" << endl;
     primaryPQ.pop();
 
-    //std::cout << "about to check verbose mode" << endl;
     //verbose mode
 
     auto itVerbose = std::find(options.anythingExtraWhat.begin(), options.anythingExtraWhat.end(), anythingExtra::kVerboseFlag);
@@ -349,7 +303,6 @@ void mineEscape::getOut(const Options &options){
     map2D[rowToInvestigate][colToInvestigate].num = 0;
     map2D[rowToInvestigate][colToInvestigate].beenInvestigated = true;
 
-    //std::cout << "cleared tile and marked investigated" << endl;
 
     if (rowToInvestigate == 0 || rowToInvestigate == sideLength - 1 || colToInvestigate == 0 || colToInvestigate == sideLength - 1)
     {
@@ -359,8 +312,6 @@ void mineEscape::getOut(const Options &options){
     //CASE FOR TNT
     if (numInInvestigated == -1)
     {
-
-      //std::cout << "tile being investigated is TNT at [" << primaryPQ.top().row << "," << primaryPQ.top().col << "]" << endl;
 
       //verbose mode
       if (itVerbose != options.anythingExtraWhat.end() && !map2D[rowToInvestigate][colToInvestigate].beenPushedBackToTNT)
@@ -385,7 +336,6 @@ void mineEscape::getOut(const Options &options){
       {
         TNTpq.push(PQEntry(map2D[rowToInvestigate - 1][colToInvestigate].num, rowToInvestigate - 1, colToInvestigate));
         map2D[rowToInvestigate - 1][colToInvestigate].beenPushedBackToTNT = true;
-        //std::cout << "pushed upNeighbor: " << upNeighbor.rubble << " at [" << upNeighbor.row << "," << upNeighbor.col << "] to tnt PQ" << endl;
       }
 
       //if current row is not last row, add below to TNT pq
@@ -394,7 +344,6 @@ void mineEscape::getOut(const Options &options){
       {
         TNTpq.push(PQEntry(map2D[rowToInvestigate + 1][colToInvestigate].num, rowToInvestigate + 1, colToInvestigate));
         map2D[rowToInvestigate + 1][colToInvestigate].beenPushedBackToTNT = true;
-        //std::cout << "pushed downNeighbor: " << downNeighbor.rubble << " at [" << downNeighbor.row << "," << downNeighbor.col << "] to tnt PQ" << endl;
       }
 
       //if current col is not first, add left to TNT pq
@@ -403,7 +352,6 @@ void mineEscape::getOut(const Options &options){
       {
         TNTpq.push(PQEntry(map2D[rowToInvestigate][colToInvestigate - 1].num, rowToInvestigate, colToInvestigate - 1));
         map2D[rowToInvestigate][colToInvestigate - 1].beenPushedBackToTNT = true;
-        //std::cout << "pushed leftNeighbor: " << leftNeighbor.rubble << " at [" << leftNeighbor.row << "," << leftNeighbor.col << "] to tnt PQ" << endl;
       }
 
       //if current col is not last, add right to TNT pq
@@ -413,7 +361,6 @@ void mineEscape::getOut(const Options &options){
         TNTpq.push(PQEntry(map2D[rowToInvestigate][colToInvestigate + 1].num, rowToInvestigate, colToInvestigate + 1));
         map2D[rowToInvestigate][colToInvestigate + 1].beenPushedBackToTNT = true;
 
-        //std::cout << "pushed rightNeighbor: " << rightNeighbor.rubble << " at [" << rightNeighbor.row << "," << rightNeighbor.col << "] to tnt PQ" << endl;
       }
 
       //okay, now added all neighbors to TNT pq to be detonated
@@ -429,13 +376,9 @@ void mineEscape::getOut(const Options &options){
         //cout << "popping from tnt pq" << endl;
         TNTpq.pop();
 
-        //std::cout << "popped " << tntNumInInvestigated << " at [" << tntRowToInvestigate << "," << tntColToInvestigate  << "] from tnt pq" << endl;
-
-        //std::cout << "pushing top of TNT pq onto normal PQ" << endl;
         //push top of TNT priority queue onto normal priority queue because its now discovered
         primaryPQ.push(PQEntry(0, tntRowToInvestigate, tntColToInvestigate));
 
-        //std::cout << "pushed temp: " << temp.rubble << " at [" << temp.row << "," << temp.col << "] to primary PQ" << endl;
 
         //verbose mode
         if (itVerbose != options.anythingExtraWhat.end() && map2D[tntRowToInvestigate][tntColToInvestigate].num > 0)
@@ -505,15 +448,12 @@ void mineEscape::getOut(const Options &options){
 
 
         //make sure the change is reflected on the map
-        //TODO: should this be tntrow? giving weird output
         map2D[tntRowToInvestigate][tntColToInvestigate].num = 0;
         map2D[tntRowToInvestigate][tntColToInvestigate].beenDiscovered = true;
 
-        //std::cout << "tntNumInInvestigated: " << tntNumInInvestigated << endl;
 
         if (tntNumInInvestigated == -1)
         {
-          //std::cout << "oh look another tnt" << endl;
 
           //verbose mode
           if (itVerbose != options.anythingExtraWhat.end())
@@ -533,8 +473,6 @@ void mineEscape::getOut(const Options &options){
             TNTpq.push(PQEntry(map2D[tntRowToInvestigate - 1][tntColToInvestigate].num, tntRowToInvestigate - 1, tntColToInvestigate));
             map2D[tntRowToInvestigate - 1][tntColToInvestigate].beenPushedBackToTNT = true;
 
-
-            //std::cout << "pushed upNeighbor: " << upNeighbor.rubble << " at [" << upNeighbor.row << "," << upNeighbor.col << "] to tnt PQ" << endl;
           }
 
           //if current row is not last row, add below to TNT pq
@@ -545,7 +483,6 @@ void mineEscape::getOut(const Options &options){
             TNTpq.push(PQEntry(map2D[tntRowToInvestigate + 1][tntColToInvestigate].num, tntRowToInvestigate + 1, tntColToInvestigate));
             map2D[tntRowToInvestigate + 1][tntColToInvestigate].beenPushedBackToTNT = true;
 
-            //std::cout << "pushed downNeighbor: " << downNeighbor.rubble << " at [" << downNeighbor.row << "," << downNeighbor.col << "] to tnt PQ" << endl;
           }
 
           //if current col is not first, add left to TNT pq
@@ -555,7 +492,6 @@ void mineEscape::getOut(const Options &options){
             TNTpq.push(PQEntry(map2D[tntRowToInvestigate][tntColToInvestigate - 1].num, tntRowToInvestigate, tntColToInvestigate - 1));
             map2D[tntRowToInvestigate][tntColToInvestigate - 1].beenPushedBackToTNT = true;
 
-            //std::cout << "pushed leftNeighbor: " << leftNeighbor.rubble << " at [" << leftNeighbor.row << "," << leftNeighbor.col << "] to tnt PQ" << endl;
           }
 
           //if current col is not last, add right to TNT pq
@@ -565,7 +501,6 @@ void mineEscape::getOut(const Options &options){
             TNTpq.push(PQEntry(map2D[tntRowToInvestigate][tntColToInvestigate + 1].num, tntRowToInvestigate, tntColToInvestigate + 1));
             map2D[tntRowToInvestigate][tntColToInvestigate + 1].beenPushedBackToTNT = true;
 
-            //std::cout << "pushed rightNeighbor: " << rightNeighbor.rubble << " at [" << rightNeighbor.row << "," << rightNeighbor.col << "] to tnt PQ" << endl;
           }
         }
 
