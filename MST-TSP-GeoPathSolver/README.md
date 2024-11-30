@@ -7,7 +7,7 @@ The vertices in this project are categorized into main campus, medical campus, o
 2. **FASTTSP**: Constructs a near-optimal TSP solution using a heuristic insertion method.
 3. **OptTSP**: Improves TSP solutions from FASTTSP with a combination of permutation generation and pruning (branch-and-bound) strategies.
 
-All files in this project are my own work. 
+All files in this project are my own work. Output is omitted here to keep the focus on the core implementation, as the results are quite lengthy and mainly related to performance metrics.
 
 ## **Skills Demonstrated**
 - **Graph Algorithm Implementation**: Designed Prim's Algorithm for MST construction and applied it to approximate TSP solutions.
