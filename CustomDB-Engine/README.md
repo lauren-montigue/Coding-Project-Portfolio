@@ -11,7 +11,7 @@ Silly QL is a lightweight database engine that is built to explore the foundatio
 ## **Key Features**
 - **Command-Based Interface**: Supports commands like `CREATE`, `INSERT`, `PRINT`, `PRINTWHERE`, `DELETE`, `JOIN`, and more.
 - **Error Handling**: Provides meaningful feedback for invalid operations or commands input by the user.
-- **Efficient Data Management with Hash Tables**: Tables are stored and managed using hash tables, enabling fast lookups, insertions, and deletions.
+- **Efficient Data Management**: Tables are stored and managed using hash tables, enabling fast lookups, insertions, and deletions.
 
 ## **Example Usage**
 ```plaintext
